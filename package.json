@@ -9,6 +9,7 @@
     "allure:chro": "cypress run --browser chrome --env allure=true --reporter mocha-allure-reporter",
     "allure:fire": "npx cypress run --browser firefox --env allure=true",
     "allure:repo": "allure generate allure-results --clean -o allure-report && allure open allure-report",
+    "allure:ci": "allure generate allure-results --clean -o allure-report",
     "allure:clea": "rm -r allure-results/ allure-report cypress/screenshots || true"
   },
   "author": "Diego Barbosa",

@@ -28,19 +28,27 @@ jobs:
 
       # Instalação de dependências do projeto
       - name: Step 3 - Instalar dependencias
-        run: npm install
+        run: npm install --verbose
 
       # Rodando os testes com o Cypress
       - name: Step 4 - Execucao dos testes com cypress
-        run: npm run test
+        run: npm run allure:chro
+        continue-on-error: true
 
       # Salvar os relatórios de testes como artefato
       - name: Step 5 - gerar allure report
-        run: npm run allure:repo
+        run: npm run allure:ci
 
       # Publicar resultado como comentário no pull request (opcional)
       - name: Step 6 - Upload Allure report
-        uses: action/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
-            name: report allure
-            path: allure-report
+          name: report allure
+          path: allure-report
+
+      - name: Step 7 - publish report
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+           publish_branch: report_page_TAYA_cypress
+           publish_dir: allure-report
