@@ -43,4 +43,11 @@ export class Base {
         this.botaoTipoPessoa(tipoPessoa)
         this.botaoSubmeter(paramsEtapa)
     }
+
+    static paginaConsorcio(tipoPessoa, paramsEtapa) {
+        this.baseUrlCalc();
+        this.selecaoProdutoConsorcio()
+        this.botaoTipoPessoa(tipoPessoa)
+        this.botaoSubmeter(paramsEtapa)
+    }
 }

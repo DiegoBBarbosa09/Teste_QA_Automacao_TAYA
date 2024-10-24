@@ -39,3 +39,5 @@ Relatorio será gerado e abrirá no navegador exibindo o resultado dos testes
 
 ## Plus de relatorio
     Utilizando do github pages o relatorio gerado nessas suites de teste é publicado como artefato e gerado uma pagina com o relatorio para da branch main para a branch report_page_TAYA_cypress
+
+    - Um teste irá falhar para ser visualizado como o relatorio apresentará o erro
