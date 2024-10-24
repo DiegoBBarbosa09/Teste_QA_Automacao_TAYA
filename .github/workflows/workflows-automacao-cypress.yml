@@ -1,0 +1,44 @@
+name: Run Cypress Tests
+
+# Evento para rodar os testes no push e merge para a branch 'main'
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout do repositório
+      - name: Step 1 - Checkout repository
+        uses: actions/checkout@v4
+
+      # Configuração do Node.js (usando versão 16.x)
+      - name: Step 2 - Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # Instalação de dependências do projeto
+      - name: Step 3 - Instalar dependencias
+        run: npm install
+
+      # Rodando os testes com o Cypress
+      - name: Step 4 - Execucao dos testes com cypress
+        run: npm run test
+
+      # Salvar os relatórios de testes como artefato
+      - name: Step 5 - gerar allure report
+        run: npm run allure:repo
+
+      # Publicar resultado como comentário no pull request (opcional)
+      - name: Step 6 - Upload Allure report
+        uses: action/upload-artifact@v4
+        with:
+            name: report allure
+            path: allure-report
