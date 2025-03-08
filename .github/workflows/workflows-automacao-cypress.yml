@@ -41,7 +41,7 @@ jobs:
 
       # Publicar resultado como comentário no pull request (opcional)
       - name: Step 6 - Upload Allure report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.6.1
         with:
           name: report allure
           path: allure-report
